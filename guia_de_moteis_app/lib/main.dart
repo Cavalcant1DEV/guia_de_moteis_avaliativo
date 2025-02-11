@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:guia_de_moteis/views/HomeScreen.dart';
-import 'package:guia_de_moteis/views/SplashScreen.dart';
+import 'package:go/views/HomeScreen.dart';
+import 'package:go/views/SplashScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,15 +14,44 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Guia de Motéis GO',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color.fromARGB(255, 248, 17, 0),
+        colorScheme: ColorScheme(
+          brightness: Brightness.light,
+          primary: Colors.red, // Cor primária
+          onPrimary: Colors.white, // Cor do texto sobre a cor primária
+          secondary: Colors.redAccent, // Cor secundária
+          onSecondary: Colors.white, // Cor do texto sobre a cor secundária
+          error: Colors.red, // Cor para mensagens de erro
+          onError: Colors.white, // Cor do texto sobre a cor de erro
+          surface: Colors.white, // Cor para superfícies/fundo
+          onSurface: Colors.black, // Cor do texto sobre superfícies/fundo
         ),
-        useMaterial3: true,
+
+        // Card - Fundo vermelho, texto branco
+        cardColor: Colors.red,
+        cardTheme: CardTheme(
+          color: Colors.red, // Cor de fundo dos cards
+          margin: EdgeInsets.all(8),
+        ),
+
+        // TextButton - Texto
+        textButtonTheme: TextButtonThemeData(
+          style: TextButton.styleFrom(
+            foregroundColor: Colors.white, // Cor do texto
+            textStyle:
+                TextStyle(color: Colors.white), // Garantir que o texto é branco
+          ),
+        ),
+
+        // ListTile - Fundo branco, texto preto
+        listTileTheme: ListTileThemeData(
+          tileColor: Colors.white, // Cor de fundo
+          textColor: Colors.black, // Cor do texto
+        ),
       ),
       initialRoute: '/splash',
       routes: {
         '/splash': (_) => Splashscreen(),
-        '/home': (context) => HomeScreen()
+        '/home': (context) => HomeScreen(option: 0)
       },
     );
   }

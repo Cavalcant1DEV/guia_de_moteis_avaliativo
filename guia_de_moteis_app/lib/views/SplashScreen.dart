@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go/views/HomeScreen.dart';
 
 class Splashscreen extends StatefulWidget {
   const Splashscreen({super.key});
@@ -10,8 +11,6 @@ class Splashscreen extends StatefulWidget {
 class _SplashscreenState extends State<Splashscreen> {
   @override
   void initState() {
-    // TODO: implement initState
-
     //Realizar aplicação de verificação de escolha do usuário para o a seleção do topbar
 
     Future.wait([
@@ -19,7 +18,13 @@ class _SplashscreenState extends State<Splashscreen> {
         const Duration(seconds: 3),
       )
     ]).then(
-      (escolha) => Navigator.of(context).pushReplacementNamed('/home'),
+      // Fazer com o que o parâmetro escolha seja definido através da busca pelo cache
+
+      (escolha) => Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (context) => HomeScreen(option: 0),
+        ),
+      ),
     );
 
     super.initState();
@@ -27,9 +32,12 @@ class _SplashscreenState extends State<Splashscreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
-        child: Icon(Icons.logo_dev),
+        child: SizedBox(
+          height: 40,
+          child: Image.asset('assets/logo.png'),
+        ),
       ),
     );
   }
