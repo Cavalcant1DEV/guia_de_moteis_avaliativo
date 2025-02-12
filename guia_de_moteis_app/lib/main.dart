@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:go/controllers/Provider.dart';
 import 'package:go/views/HomeScreen.dart';
 import 'package:go/views/SplashScreen.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => Filter(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
