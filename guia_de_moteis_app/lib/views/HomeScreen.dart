@@ -160,40 +160,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       appBar: AppBar(
         backgroundColor: Colors.red,
         iconTheme: IconThemeData(color: Colors.white),
-        // title: Container(
-        //   decoration: BoxDecoration(color: Colors.red[900]),
-        //   child: TabBar(
-        //     controller: _tabController,
-        //     unselectedLabelStyle: TextStyle(color: Colors.white),
-        //     indicator: BoxDecoration(
-        //       color: Colors.white,
-        //     ),
-        //     tabs: [
-        //       Tab(
-        //         child: Row(
-        //           children: [
-        //             Container(
-        //               padding: EdgeInsets.symmetric(horizontal: 8),
-        //               child: Icon(Icons.bolt),
-        //             ),
-        //             Text('Ir agora'),
-        //           ],
-        //         ),
-        //       ),
-        //       Tab(
-        //         child: Row(
-        //           children: [
-        //             Container(
-        //               padding: EdgeInsets.symmetric(horizontal: 8),
-        //               child: Icon(Icons.calendar_month),
-        //             ),
-        //             Text('Ir outro dia'),
-        //           ],
-        //         ),
-        //       ),
-        //     ],
-        //   ),
-        // ),
         actions: [
           IconButton(
             icon: Icon(
@@ -272,8 +238,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                         is Map) {
                                       matchInternal = true;
                                     } else {
-
-                                      if (category[sFiltros[filtro][chave]].toLowerCase() ==
+                                      if (category[sFiltros[filtro][chave]]
+                                              .toLowerCase() ==
                                           filtro) {
                                         matchInternal = true;
                                       }
@@ -650,142 +616,142 @@ class _FilterBarState extends State<FilterBar> {
           children: [
             Expanded(
               child: Container(
-                  decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 247, 247, 247),
-                    border: Border(
-                      bottom: BorderSide(
-                          color: const Color.fromARGB(255, 231, 229, 229)),
-                    ),
+                decoration: BoxDecoration(
+                  color: const Color.fromARGB(255, 247, 247, 247),
+                  border: Border(
+                    bottom: BorderSide(
+                        color: const Color.fromARGB(255, 231, 229, 229)),
                   ),
-                  padding: EdgeInsets.all(12),
-                  height: 68,
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Builder(
-                      builder: (context) {
-                        List<Widget> filtrosWidget = [];
+                ),
+                padding: EdgeInsets.all(12),
+                height: 68,
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Builder(
+                    builder: (context) {
+                      List<Widget> filtrosWidget = [];
 
-                        Iterable keys = filtros.lista.keys;
+                      Iterable keys = filtros.lista.keys;
 
-                        int count = 0;
+                      int count = 0;
 
-                        for (var key in keys) {
-                          if (filtros.lista[key]['selected']) {
-                            count++;
-                          }
-                          if (filtros.lista[key]['shortcut']) {
-                            filtrosWidget.add(
-                              Container(
-                                margin: EdgeInsets.only(left: 3, right: 5),
-                                child: ElevatedButton(
-                                  style: ButtonStyle(
-                                    backgroundColor: WidgetStatePropertyAll(
-                                        filtros.lista[key]['selected']
-                                            ? Colors.red
-                                            : Colors.white),
-                                    shape: WidgetStatePropertyAll(
-                                      RoundedRectangleBorder(
-                                        side: BorderSide(
-                                          color: !filtros.lista[key]['selected']
-                                              ? const Color.fromARGB(
-                                                  255, 247, 247, 247)
-                                              : Colors.red,
-                                        ),
-                                        borderRadius: BorderRadius.all(
-                                          Radius.circular(7),
-                                        ),
-                                      ),
-                                    ),
-                                    padding: WidgetStatePropertyAll(
-                                      EdgeInsets.symmetric(
-                                          horizontal: 3, vertical: 1),
-                                    ),
-                                  ),
-                                  onPressed: () {
-                                    // Utilizar do provider para controlar o estado
-                                    filtros.selectOption(key);
-                                  },
-                                  child: Text(
-                                    key,
-                                    style: TextStyle(
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.w500,
-                                      color: filtros.lista[key]['selected']
-                                          ? Colors.white
-                                          : Colors.black,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            );
-                          }
+                      for (var key in keys) {
+                        if (filtros.lista[key]['selected']) {
+                          count++;
                         }
-
-                        filtrosWidget.insert(
-                          0,
-                          Stack(
-                            alignment: Alignment.topRight,
-                            children: [
-                              Container(
-                                margin: EdgeInsets.only(left: 3, right: 5),
-                                child: ElevatedButton(
-                                  style: ButtonStyle(
-                                      shape: WidgetStatePropertyAll(
-                                          RoundedRectangleBorder(
-                                              side: BorderSide(
-                                                color: const Color.fromARGB(
-                                                    255, 247, 247, 247),
-                                              ),
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(7)))),
-                                      padding: WidgetStatePropertyAll(
-                                          EdgeInsets.symmetric(
-                                              horizontal: 5, vertical: 2))),
-                                  onPressed: () {
-                                    // Navigator.push(context, MaterialPageRoute(builder: (context) => FilterScreen,),);
-                                  },
-                                  child: Row(
-                                    children: [
-                                      Icon(
-                                        Icons.list,
-                                        color: Colors.black,
+                        if (filtros.lista[key]['shortcut']) {
+                          filtrosWidget.add(
+                            Container(
+                              margin: EdgeInsets.only(left: 3, right: 5),
+                              child: ElevatedButton(
+                                style: ButtonStyle(
+                                  backgroundColor: WidgetStatePropertyAll(
+                                      filtros.lista[key]['selected']
+                                          ? Colors.red
+                                          : Colors.white),
+                                  shape: WidgetStatePropertyAll(
+                                    RoundedRectangleBorder(
+                                      side: BorderSide(
+                                        color: !filtros.lista[key]['selected']
+                                            ? const Color.fromARGB(
+                                                255, 247, 247, 247)
+                                            : Colors.red,
                                       ),
-                                      Text(
-                                        'Filtros',
-                                        style: TextStyle(
-                                            fontSize: 10,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.black),
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(7),
                                       ),
-                                    ],
+                                    ),
+                                  ),
+                                  padding: WidgetStatePropertyAll(
+                                    EdgeInsets.symmetric(
+                                        horizontal: 3, vertical: 1),
+                                  ),
+                                ),
+                                onPressed: () {
+                                  // Utilizar do provider para controlar o estado
+                                  filtros.selectOption(key);
+                                },
+                                child: Text(
+                                  key,
+                                  style: TextStyle(
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.w500,
+                                    color: filtros.lista[key]['selected']
+                                        ? Colors.white
+                                        : Colors.black,
                                   ),
                                 ),
                               ),
-                              if (count > 0)
-                                Container(
-                                  height: 18,
-                                  width: 18,
-                                  decoration: BoxDecoration(
-                                      color: Colors.red,
-                                      shape: BoxShape.circle),
-                                  child: Center(
-                                    child: Text(
-                                      '$count',
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 10),
-                                    ),
-                                  ),
-                                )
-                            ],
-                          ),
-                        );
+                            ),
+                          );
+                        }
+                      }
 
-                        return Row(
-                          children: filtrosWidget,
-                        );
-                      },
-                    ),
-                  )),
+                      filtrosWidget.insert(
+                        0,
+                        Stack(
+                          alignment: Alignment.topRight,
+                          children: [
+                            Container(
+                              margin: EdgeInsets.only(left: 3, right: 5),
+                              child: ElevatedButton(
+                                style: ButtonStyle(
+                                    shape: WidgetStatePropertyAll(
+                                        RoundedRectangleBorder(
+                                            side: BorderSide(
+                                              color: const Color.fromARGB(
+                                                  255, 247, 247, 247),
+                                            ),
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(7)))),
+                                    padding: WidgetStatePropertyAll(
+                                        EdgeInsets.symmetric(
+                                            horizontal: 5, vertical: 2))),
+                                onPressed: () {
+                                  // Navigator.push(context, MaterialPageRoute(builder: (context) => FilterScreen,),);
+                                },
+                                child: Row(
+                                  children: [
+                                    Icon(
+                                      Icons.list,
+                                      color: Colors.black,
+                                    ),
+                                    Text(
+                                      'Filtros',
+                                      style: TextStyle(
+                                          fontSize: 10,
+                                          fontWeight: FontWeight.w500,
+                                          color: Colors.black),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            if (count > 0)
+                              Container(
+                                height: 18,
+                                width: 18,
+                                decoration: BoxDecoration(
+                                    color: Colors.red, shape: BoxShape.circle),
+                                child: Center(
+                                  child: Text(
+                                    '$count',
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 10),
+                                  ),
+                                ),
+                              )
+                          ],
+                        ),
+                      );
+
+                      return Row(
+                        children: filtrosWidget,
+                      );
+                    },
+                  ),
+                ),
+              ),
             ),
           ],
         );
