@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go/controllers/Provider.dart';
 import 'package:go/controllers/Request.dart';
-import 'package:go/views/CategoryDetails.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -428,13 +427,13 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                               padding: EdgeInsets.all(5),
                                               child: GestureDetector(
                                                 onTap: () {
-                                                  Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          CategoryDetails(),
-                                                    ),
-                                                  );
+                                                  // Navigator.push(
+                                                  //   context,
+                                                  //   MaterialPageRoute(
+                                                  //     builder: (context) =>
+                                                  //         CategoryDetails(),
+                                                  //   ),
+                                                  // );
                                                 },
                                                 child: Row(
                                                   mainAxisAlignment:
